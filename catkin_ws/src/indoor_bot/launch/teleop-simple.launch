@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="world_file" default="$(find indoor_bot)/worlds/big_apartment.world"/>
+    <arg name="configuration_basename" default="indoor_bot_lidar_slam_2d_gazebo.lua"/>
+
+    <!-- Launch WORLD -->
+    <include file="$(find indoor_bot)/launch/include/world.launch">
+        <arg name="world_file" value="$(arg world_file)"/>
+    </include>
+
+    <!-- Launch ROBOT -->
+    <include file="$(find indoor_bot)/launch/include/indoor_bot.launch">
+        <arg name="x" value="0"/>
+        <arg name="y" value="0"/>
+        <arg name="z" value="0"/>
+        <arg name="roll" value="0"/>
+        <arg name="pitch" value="0"/>
+        <arg name="yaw" value="0"/>
+    </include>
+
+    <!-- Teleoperation node -->
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop" output="screen"/>
+
+</launch>
