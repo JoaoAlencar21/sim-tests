@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 
 <robot name="indoor_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+  <xacro:property name="pi" value="3.1515926"/>
   <xacro:include filename="$(find indoor_bot)/models/urdf/indoor_bot.gazebo" />
 
   <link name="robot_footprint"></link>
@@ -220,6 +220,17 @@
       </geometry>
     </collision>
   </link>
+
+  <joint name="camera_optical_joint" type="fixed">
+    <parent link="camera"/>
+    <child link="camera_optical"/>
+    <origin xyz="0.0 0.0 0.0" rpy="${-pi/2} 0.0 ${-pi/2}"/>
+  </joint>
+
+  <link name="camera_optical"/>
+    
+
+  
 
   <gazebo reference="camera">
     <material>Gazebo/Red</material>
