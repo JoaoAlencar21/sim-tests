@@ -10,7 +10,7 @@
 # Build a Docker image from a Dockerfile located in the current directory.
 docker build \
     --network=host \
-    -f docker/simtests.Dockerfile \
+    -f docker/simtests.dockerfile \
     -t simtests:noetic \
     --rm \
     .
